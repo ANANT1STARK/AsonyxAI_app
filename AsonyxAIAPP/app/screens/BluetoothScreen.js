@@ -1,52 +1,55 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity ,Image} from "react-native";
-import { PermissionsAndroid, Platform } from "react-native";
-import { BleManager } from "react-native-ble-plx";
+import { View, Text, StyleSheet, TouchableOpacity ,Image , Alert} from "react-native";
+// import { PermissionsAndroid, Platform } from "react-native";
+// import { BleManager } from "react-native-ble-plx";
 
 
 
-const manager = new BleManager();
+// const manager = new BleManager();
 
-async function requestBluetoothPermissions() {
-  if (Platform.OS === "android") {
-    await PermissionsAndroid.requestMultiple([
-      PermissionsAndroid.PERMISSIONS.BLUETOOTH_SCAN,
-      PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT,
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-    ]);
-  }
-}
+// async function requestBluetoothPermissions() {
+//   if (Platform.OS === "android") {
+//     await PermissionsAndroid.requestMultiple([
+//       PermissionsAndroid.PERMISSIONS.BLUETOOTH_SCAN,
+//       PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT,
+//       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+//     ]);
+//   }
+// }
 export default function BluetoothScreen() {
-   useEffect(() => {
-    // Request permissions first
-    requestBluetoothPermissions();
-  }, []);
+    const scanDevices =()=>{
+        Alert.alert("Application under working!");
+    }
+//    useEffect(() => {
+//     // Request permissions first
+//     requestBluetoothPermissions();
+//   }, []);
 
-const scanDevices = () => {
-    console.log("Scanning for Bluetooth devices...");
-    manager.startDeviceScan(null, null, (error, device) => {
-      if (error) {
-        console.error(error);
-        return;
-      }
+// const scanDevices = () => {
+//     console.log("Scanning for Bluetooth devices...");
+//     manager.startDeviceScan(null, null, (error, device) => {
+//       if (error) {
+//         console.error(error);
+//         return;
+//       }
 
-      console.log("Found device:", device.name);
+//       console.log("Found device:", device.name);
 
-      // Check if it's our Raspberry Pi
-      if (device.name === "My_Raspberry_Pi") {
-        manager.stopDeviceScan();
-        device.connect()
-          .then(d => {
-            console.log("Connected to Raspberry Pi!");
-            return d.discoverAllServicesAndCharacteristics();
-          })
-          .then(d => {
-            console.log("Ready to communicate");
-          })
-          .catch(err => console.error(err));
-      }
-    });
-  };
+//       // Check if it's our Raspberry Pi
+//       if (device.name === "My_Raspberry_Pi") {
+//         manager.stopDeviceScan();
+//         device.connect()
+//           .then(d => {
+//             console.log("Connected to Raspberry Pi!");
+//             return d.discoverAllServicesAndCharacteristics();
+//           })
+//           .then(d => {
+//             console.log("Ready to communicate");
+//           })
+//           .catch(err => console.error(err));
+//       }
+//     });
+//   };
 
   return (
     <View style={styles.container}>
