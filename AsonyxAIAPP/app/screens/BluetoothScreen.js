@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity ,Image , Alert} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity ,Image , Alert } from "react-native";
 // import { PermissionsAndroid, Platform } from "react-native";
 // import { BleManager } from "react-native-ble-plx";
 
@@ -16,9 +16,9 @@ import { View, Text, StyleSheet, TouchableOpacity ,Image , Alert} from "react-na
 //     ]);
 //   }
 // }
-export default function BluetoothScreen() {
+export default function BluetoothScreen({navigation}) {
     const scanDevices =()=>{
-        Alert.alert("Application under working!");
+        navigation.navigate("Dashboard");
     }
 //    useEffect(() => {
 //     // Request permissions first
@@ -52,31 +52,64 @@ export default function BluetoothScreen() {
 //   };
 
   return (
+    
     <View style={styles.container}>
             <View style={styles.card}>
                     <View style={styles.titleRow}>
                             <Image source={require("../assets/bluetooth.png")}
                             style={styles.logo}/>
-          <Text style={styles.title}>Bluetooth Device</Text>
-    </View>
-        <Text style={styles.info}>Status: Not Connected</Text>
-        <Text style={styles.info}>Device Name: Raspberry Pi</Text>
+                            <Text style={styles.title}>Bluetooth Device</Text>
+                    </View>
 
-        <TouchableOpacity style={styles.button} onPress={scanDevices}>
-          <Text style={styles.buttonText}>Connect</Text>
-        </TouchableOpacity>
-      </View>
+
+
+
+                    <Text style={styles.info}>Status: Not Connected</Text>
+                    <Text style={styles.info}>Device Name: Raspberry Pi</Text>
+
+
+
+                    <TouchableOpacity style={styles.button} onPress={scanDevices}>
+                            <Text style={styles.buttonText}>Connect</Text>
+                    </TouchableOpacity>
+          </View>
+
+
+            <View style={styles.card}>
+                    <View style={styles.titleRow}>
+                            <Image source={require("../assets/wifi.png")}
+                            style={styles.logo}/>
+                            <Text style={styles.title}>WiFi Device</Text>
+                    </View>
+
+
+
+
+                    <Text style={styles.info}>Status: Not Connected</Text>
+                    <Text style={styles.info}>Device Name: Raspberry Pi</Text>
+
+
+
+                    <TouchableOpacity style={styles.button} onPress={scanDevices}>
+                            <Text style={styles.buttonText}>Connect</Text>
+                    </TouchableOpacity>
+          </View>
     </View>
+   
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center",
     backgroundColor: "#f0f0f0",
     padding: 20,
+    marginTop:20
+  
+
+    
   },
   card: {
     width: "90%",

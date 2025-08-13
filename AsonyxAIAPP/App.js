@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from './app/screens/Login'
 import BluetoothScreen from './app/screens/BluetoothScreen';
+import DashboardScreen from './app/screens/DashboardScreen';
 const Stack = createNativeStackNavigator();
 
  
@@ -15,6 +16,7 @@ export default function App() {
         <Stack.Screen name="Home" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Bluetooth" component={BluetoothScreen}/>
+        <Stack.Screen name="Dashboard" component={DashboardScreen}/>
 
       </Stack.Navigator>
     </NavigationContainer>
