@@ -2,37 +2,19 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity ,ScrollView} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LocationMap from '../components/Map';
+import EmergencyContactsCard from '../components/EmergencyCall';
+import EmergencyMessageCard from '../components/EmergencyMessage';
+import AlcoholCard from '../components/AlchoholCard';
+import Navbar from '../components/Navbar';
+
 
 export default function Dashboard({navigation , percentage = 10}) {
   return (
  
     <SafeAreaView style={styles.container}>
-       {/* <ScrollView style={{padding: 3}}> */}
+       <ScrollView>
       {/* Top Bar */}
-      <View style={styles.topBar}>
-        {/* User Avatar + Name */}
-        <View style={styles.userSection}>
-          <Image
-            source={require("../assets/avatar.png")} // placeholder avatar
-            style={styles.avatar}
-          />
-          <Text style={styles.username}>John Doe</Text>
-        </View>
-
-        {/* Product Logo */}
-        <Image
-          source={require("../assets/logo.png")} // product logo placeholder
-          style={styles.productLogo}
-        />
-
-        {/* Settings Icon */}
-        <TouchableOpacity onPress={() => alert('Settings clicked')}>
-          <Image
-            source={require("../assets/settings.png")} // placeholder avatar
-            style={styles.avatar}
-          />
-        </TouchableOpacity>
-      </View>
+      <Navbar navigation={navigation}/>
 
       {/* Dashboard content */}
 
@@ -155,8 +137,11 @@ export default function Dashboard({navigation , percentage = 10}) {
       
 
 <LocationMap/>
+<EmergencyContactsCard/>
+<EmergencyMessageCard/>
+<AlcoholCard/>
 
-             {/* </ScrollView> */}
+             </ScrollView>
     </SafeAreaView>
    
   );
@@ -167,41 +152,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#fff',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5, // for Android shadow
-  },
-  userSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  avatar: {
-    width: 35,
-    height: 35,
-    borderRadius: 50,
-    marginRight: 8,
-  },
-  username: {
-    fontSize: 19,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  productLogo: {
-    width: 100,
-    height: 50,
-    resizeMode: 'contain',
-    //     borderWidth : 2,
-    // borderColor : 'red',
-  },
+  
   content: {
     flex: 1,
     alignItems: 'center',

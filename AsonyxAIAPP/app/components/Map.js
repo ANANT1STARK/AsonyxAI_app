@@ -54,10 +54,15 @@ export default function LocationMap() {
 const styles = StyleSheet.create({
   map: {
     flex: 1,
+       width: '100%',
+    height: 300, // FIXED HEIGHT so it won't disappear
+    borderRadius: 10,
   },
   loader: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
+   
+
 });
